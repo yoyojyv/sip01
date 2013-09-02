@@ -6,6 +6,9 @@ import org.apache.commons.dbcp.BasicDataSource;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * 02. 생성자에서 dataSource 를 직접 생성하고 있음. BasicDataSource 와 긴밀한 연결.
+ */
 public class AccountService {
 
   private JdbcAccountDao accountDao;
