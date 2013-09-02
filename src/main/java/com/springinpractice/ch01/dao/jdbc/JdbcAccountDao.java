@@ -1,9 +1,11 @@
 package com.springinpractice.ch01.dao.jdbc;
 
 import com.springinpractice.ch01.dao.AccountDao;
+import com.springinpractice.ch01.model.Account;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * 01. JdbcAccountDao 가 org.apache.commons.dbcp.BasicDataSource 와 긴밀하게 연결되어있음
@@ -29,6 +31,10 @@ public class JdbcAccountDao implements AccountDao {
 
   public void setDataSource(DataSource dataSource) {
     this.dataSource = dataSource;
+  }
+
+  public List<Account> findAll() throws Exception {
+    throw new UnsupportedOperationException("This method has not been implemented");
   }
 
 }

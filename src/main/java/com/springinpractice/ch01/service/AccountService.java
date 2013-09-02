@@ -2,14 +2,17 @@ package com.springinpractice.ch01.service;
 
 import com.springinpractice.ch01.dao.AccountDao;
 import com.springinpractice.ch01.dao.jdbc.JdbcAccountDao;
+import com.springinpractice.ch01.model.Account;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import java.io.InputStream;
-import java.util.Properties;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * 02. 생성자에서 dataSource 를 직접 생성하고 있음. BasicDataSource 와 긴밀한 연결.
  * 03. AccountDao -> setter 메소드를 이용한 DI
+ * 04. findDeliquentAccounts(), daysAgo() 메소드 추가
  */
 public class AccountService {
 
@@ -35,10 +38,36 @@ public class AccountService {
 
   private AccountDao accountDao;
 
-  public AccountService() {}
+  public AccountService() {
+  }
 
   public void setAccountDao(AccountDao accountDao) {
     this.accountDao = accountDao;
   }
+
+  public List<Account> findDeliquentAccounts() throws Exception {
+    List<Account> delinquentAccounts = new ArrayList<Account>();
+    List<Account> accounts = accountDao.findAll();
+    Date thirtyDaysAgo = daysAgo(30);
+
+
+    for (Account account : accounts) {
+      boolean owesMoney = account.getBalance()
+        .compareTo(BigDecimal.ZERO) > 0;
+      boolean thirtyDaysLate = account.getLastPaidOn()
+        .compareTo(thirtyDaysAgo) <= 0;
+      if (owesMoney && thirtyDaysLate) {
+        delinquentAccounts.add(account);
+      }
+    }
+    return delinquentAccounts;
+  }
+
+  private static Date daysAgo(int days) {
+    GregorianCalendar gc = new GregorianCalendar();
+    gc.add(Calendar.DATE, -days);
+    return gc.getTime();
+  }
+
 
 }
