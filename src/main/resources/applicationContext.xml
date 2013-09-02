@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
+  <!--
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <property name="url" value="jdbc:mysql://localhost:3306/sip?autoReconnect=true"/>
@@ -14,6 +15,12 @@
 
   <bean id="accountDao" class="com.springinpractice.ch01.dao.jdbc.JdbcAccountDao">
     <property name="dataSource" ref="dataSource"/>
+  </bean>
+  -->
+
+  <!-- 04. csv dao 로 변경 -->
+  <bean id="accountDao" class="com.springinpractice.ch01.dao.csv.CsvAccountDao">
+    <property name="csvResource" value="accounts.csv"/>
   </bean>
 
   <bean id="accountService" class="com.springinpractice.ch01.service.AccountService">
