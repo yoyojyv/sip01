@@ -4,6 +4,8 @@ import com.springinpractice.ch01.dao.AccountDao;
 import com.springinpractice.ch01.dao.jdbc.JdbcAccountDao;
 import com.springinpractice.ch01.model.Account;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -36,6 +38,8 @@ public class AccountService {
 //
 //  }
 
+  @Autowired
+  @Qualifier("csvAccountDao")
   private AccountDao accountDao;
 
   public AccountService() {
