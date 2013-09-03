@@ -97,30 +97,14 @@
   <bean id="anotherPerson2" class="com.springinpractice.ch01.model.Person" c:_0="i'm" c:_1="other persion" />
   -->
 
-  <!-- annotation 을 이용한 빈 주입 -->
+  <!-- annotation 을 이용한 빈 주입
   <context:annotation-config/>
+  -->
+
+  <context:component-scan base-package="com.springinpractice.ch01"/>
 
   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="location" value="springbook.properties"/>
-  </bean>
-
-
-  <bean id="accountService"
-        class="com.springinpractice.ch01.service.AccountService">
-    <!--
-    이부분이 불필요해짐
-    <property name="accountDao" ref="accountDao"/>
-    -->
-  </bean>
-
-
-  <bean id="jdbcAccountDao"
-        class="com.springinpractice.ch01.dao.jdbc.JdbcAccountDao">
-    <property name="dataSource" ref="dataSource"/>
-  </bean>
-
-  <bean id="csvAccountDao" class="com.springinpractice.ch01.dao.csv.CsvAccountDao">
-    <property name="csvResource" value="accounts.csv"/>
   </bean>
 
   <bean id="dataSource"
@@ -132,17 +116,5 @@
     <property name="username" value="${dataSource.username}"/>
     <property name="password" value="${dataSource.password}"/>
   </bean>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </beans>

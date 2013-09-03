@@ -6,6 +6,8 @@ import com.springinpractice.ch01.model.Account;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -15,7 +17,10 @@ import java.util.*;
  * 02. 생성자에서 dataSource 를 직접 생성하고 있음. BasicDataSource 와 긴밀한 연결.
  * 03. AccountDao -> setter 메소드를 이용한 DI
  * 04. findDeliquentAccounts(), daysAgo() 메소드 추가
+ * 08. Streotype annotation 적용 @Component
  */
+// @Component
+@Service
 public class AccountService {
 
 //  private JdbcAccountDao accountDao;
@@ -39,7 +44,6 @@ public class AccountService {
 //  }
 
   @Autowired
-  @Qualifier("csvAccountDao")
   private AccountDao accountDao;
 
   public AccountService() {

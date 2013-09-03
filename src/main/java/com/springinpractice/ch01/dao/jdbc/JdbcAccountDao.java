@@ -3,6 +3,8 @@ package com.springinpractice.ch01.dao.jdbc;
 import com.springinpractice.ch01.dao.AccountDao;
 import com.springinpractice.ch01.model.Account;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  * 02. dataSource -> setter method를 이용하여 설정 하도록 변경
  *
  */
+// @Component
+@Repository
 public class JdbcAccountDao implements AccountDao {
 
 //  private BasicDataSource dataSource;
