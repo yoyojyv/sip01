@@ -4,7 +4,7 @@ import com.springinpractice.ch01.dao.AccountDao;
 import org.apache.commons.dbcp.BasicDataSource;
 
 /**
- * 01. JdbcAccountDao 가 org.apache.commons.dbcp.BasicDataSource 와 긴밀하게 연결되어있음
+ * JdbcAccountDao 가 org.apache.commons.dbcp.BasicDataSource 와 긴밀하게 연결되어있음
  */
 public class JdbcAccountDao implements AccountDao {
 
